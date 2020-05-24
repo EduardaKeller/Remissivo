@@ -15,7 +15,7 @@ public class Leitura {
 
     public void lerArquivo(String nomeArquivo) {
 
-        Path path1 = Paths.get("src/" + nomeArquivo +".txt");
+        Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
         System.out.println(path1);
 
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
