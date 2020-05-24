@@ -37,6 +37,5 @@ public class RemoveStopWords {
             System.err.format("Erro na leitura do arquivo: ", e);
         }
         return false;
-        //oi
     }
 }
