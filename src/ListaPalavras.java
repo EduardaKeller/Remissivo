@@ -14,7 +14,7 @@ public class ListaPalavras {
             }
         }
 
-        public void DoubleLinkedListOfInteger() {
+        public void ListaPalavras() {
             header = new Node(null);
             trailer = new Node(null);
             header.next = trailer;
