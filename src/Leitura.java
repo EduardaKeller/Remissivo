@@ -13,10 +13,12 @@ public class Leitura {
     int numLinhas = 0;
     int numPaginas = 1;
 
+    StopWords stopWords = new StopWords();
+    ListaPalavras listaPalavras = new ListaPalavras();
+
     public void lerArquivo(String nomeArquivo) {
 
         Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
-        System.out.println(path1);
 
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
             String line = null;
@@ -38,17 +40,34 @@ public class Leitura {
                 System.out.println(linhas[n]);
             }
         }
+    }
 
+    //Separa a linha em palavras, verifica se é stopwords e se não for manda pra insereRepositorio
+    public void separaPalavras(){
         for (int i = 1; i <= 10; i++) {
-            System.out.println("\nPalavras da linha " + i + ": ");
             linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
-            linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas
+            linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
+            String[] separa = linhas[i - 1].split(" ");
+            for (String s : separa) {
+                s = s.toLowerCase();
+                boolean verifica;
+                if(verifica = stopWords.verificaStopWords(s) == false){
+                    listaPalavras.insereRepositorio(s);
+                }
+                System.out.println(s);
+            }
+        }
+
+        /**"for (int i = 1; i <= 10; i++) {"
+            System.out.println("\nPalavras da linha " + i + ": ");
+            "linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
+            linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
             String[] tokens = linhas[i - 1].split(" "); // divide a string pelo espaco em branco
             for (String s : tokens) {
                 s = s.toLowerCase();
                 System.out.println("->" + s);
             }
-        }
+        }*/
     }
 }
 

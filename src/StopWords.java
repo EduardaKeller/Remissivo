@@ -11,7 +11,8 @@ public class StopWords {
     private static int contStopWords = 0;
     private static int contPalavras = 0;
 
-    public static boolean VerificaStopWords(String palavra) {
+    //Verifica se a palavra é stopword ou não
+    public boolean verificaStopWords(String palavra) {
 
         String linhas[] = new String[1000];
         int numLinhas = 0;
@@ -44,8 +45,10 @@ public class StopWords {
         return false;
     }
 
-    public static double porcentagemStopWords() {
+    public double porcentagemStopWords() {
         int aux = (contStopWords/contPalavras)*100;
         return aux;
     }
+
+
 }

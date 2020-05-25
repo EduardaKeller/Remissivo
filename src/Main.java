@@ -12,7 +12,9 @@ public class Main {
         Leitura leitura = new Leitura();
         leitura.lerArquivo(arquivo);
 
-        Menu menu = new Menu();
-        menu.mostraMenu();
+       // Menu menu = new Menu();
+        //menu.mostraMenu();
+
+        leitura.separaPalavras();
     }
 }
