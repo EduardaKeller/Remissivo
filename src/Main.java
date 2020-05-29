@@ -11,6 +11,8 @@ public class Main {
 
         Leitura leitura = new Leitura();
         leitura.lerArquivo(arquivo);
+        StopWords stopwords = new StopWords();
+        stopwords.InicializaStopWords();
 
        // Menu menu = new Menu();
         //menu.mostraMenu();
