@@ -50,11 +50,10 @@ public class Leitura {
             String[] separa = linhas[i - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
-                boolean verifica;
-                if(verifica = stopWords.verificaStopWords(s) == false){
+                if(stopWords.verificaStopWords(s) == false){
                     listaPalavras.insereRepositorio(s);
                 }
-                System.out.println(s);
+                //System.out.println(s); teste
             }
         }
 

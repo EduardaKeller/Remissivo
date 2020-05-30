@@ -4,10 +4,11 @@ public class Menu {
 
     Scanner in = new Scanner(System.in);
     int opcao;
+    ListaPalavras lista = new ListaPalavras();
 
     public void mostraMenu(){
         System.out.println("|-------------------------------------------------------------------------------|");
-        System.out.println("1 - Exibir todo o índice remissivo");
+        System.out.println("1 - Exibir todo o índice remissivo"); // ordem aufabética
         System.out.println("2 - Exibir o percentual de stopwords do texto");
         System.out.println("3 - Encontrar a palavra mais frequente, isto é, com maior número de ocorrências ");
         System.out.println("4 - Pesquisar palavra ");
@@ -25,6 +26,7 @@ public class Menu {
                 case 2:
                     break;
                 case 3:
+                    lista.palavraMaisRecorrente();
                     break;
                 case 4:
                     break;
