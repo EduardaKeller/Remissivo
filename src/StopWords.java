@@ -42,7 +42,6 @@ public class StopWords {
                     return true;
                 }
             }
-            //System.out.println(stopWords[i]);
         }
         contPalavras++;
         return false;

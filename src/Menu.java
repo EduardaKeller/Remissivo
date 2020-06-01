@@ -4,6 +4,8 @@ public class Menu {
 
     Scanner in = new Scanner(System.in);
     int opcao;
+    DoubleLinkedListPalavras lista = new DoubleLinkedListPalavras();
+
 
     public void pegarArquivo(){
         // Pega o nome do arquivo que o usuário deseja ler
@@ -38,10 +40,9 @@ public class Menu {
                     break;
                 case 3:
                     Leitura.listaPalavras.palavraMaisFrequente();
-                    //*****************lista.palavraMaisRecorrente();
                     break;
                 case 4:
-                    System.out.println("Digite a plavra que seja procurar");
+                    System.out.println("Digite a palavra que deseja procurar");
                     String p = in.next();
                     Palavra palavra = new Palavra(p.toLowerCase(), 1);
                     Leitura.listaPalavras.pesquisaPalavra(palavra);
@@ -53,7 +54,5 @@ public class Menu {
             }
         } while (opcao != 5);
     }
-
-
 }
 

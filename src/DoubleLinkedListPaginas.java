@@ -1,11 +1,7 @@
 public class DoubleLinkedListPaginas {
-    // Referencia para o sentinela de inicio da lista encadeada.
     private Node header;
-    // Referencia para o sentinela de fim da lista encadeada.
     private Node trailer;
-    // Referencia para a posicao corrente
     private Node current;
-    // Contador do numero de elementos da lista.
     private int count;
 
     private class Node {
@@ -148,13 +144,6 @@ public class DoubleLinkedListPaginas {
         return null;
     }
 
-
-    // Retorna o índice da última ocorrência de "element",
-    // ou -1 se a lista não contém "element".
-    // lista: 10 <-> 50 <-> 30 <-> 10 <-> 40 <-> 50
-    //         0      1     2      3       4     5
-    // lastIndexOf(50) retorna 5
-    // lastIndexOf(30) retorna 2
     public int lastIndexOf(int element) {
         Node aux = trailer.prev;
         for (int i=count-1; i>=0; i--) {

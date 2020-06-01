@@ -1,4 +1,3 @@
-
 public class Palavra {
     String palavra;
     DoubleLinkedListPaginas paginas;

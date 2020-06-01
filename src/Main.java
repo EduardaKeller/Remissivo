@@ -7,10 +7,5 @@ public class Main {
        Menu menu = new Menu();
        menu.pegarArquivo();
        menu.opcoes();
-
-        //leitura.separaPalavras();
-
-        //ListaPalavras listaPalavras = new ListaPalavras();
-        //listaPalavras.ListaRepositorio();
     }
 }

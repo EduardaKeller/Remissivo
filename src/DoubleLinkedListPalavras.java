@@ -1,10 +1,9 @@
-
 public class DoubleLinkedListPalavras {
-    private Node header;
+    public Node header;
     private Node trailer;
     private int count;
 
-    private class Node {
+    public static class Node {
         public Palavra element;
         public Node next;
         public Node prev;

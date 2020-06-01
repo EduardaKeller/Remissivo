@@ -19,8 +19,7 @@ public class Leitura {
         listaDeStopWords.InicializaStopWords();
         listaPalavras = new DoubleLinkedListPalavras();
 
-        //Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
-        Path path1 = Paths.get("src/Arquivos/java.txt");
+        Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
 
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
             String line = null;
@@ -74,22 +73,11 @@ public class Leitura {
     }
     public static void printaPagina(int pagina){
         System.out.println("--------------------- Pagina " + pagina + " ---------------------");
-        for (int i = (pagina*40)-40; i < (pagina*40); i++) {
+        for (int i = (pagina*40)-40; i < (pagina*40) ; i++) {
                 if(i<numLinhas){System.out.println(linhas[i]);}
                 else{}
 
         }
     }
-
-        /**"for (int i = 1; i <= 10; i++) {"
-            System.out.println("\nPalavras da linha " + i + ": ");
-            "linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
-            linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
-            String[] tokens = linhas[i - 1].split(" "); // divide a string pelo espaco em branco
-            for (String s : tokens) {
-                s = s.toLowerCase();
-                System.out.println("->" + s);
-            }
-        }*/
 }
 
