@@ -70,8 +70,15 @@ public class Leitura {
                         }
                     }
                 }
-            }
         }
+    }
+    public static void printaPagina(int pagina){
+
+        System.out.println("--------------------- Pagina " + pagina + " ---------------------");
+        for (int i = (pagina*40)-40; i < (pagina*40); i++) {
+            System.out.println(linhas[i]);
+        }
+    }
 
         /**"for (int i = 1; i <= 10; i++) {"
             System.out.println("\nPalavras da linha " + i + ": ");

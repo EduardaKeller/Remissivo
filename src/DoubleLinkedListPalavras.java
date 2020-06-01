@@ -33,6 +33,12 @@ public class DoubleLinkedListPalavras {
         return aux;
     }
 
+    public void pesquisaPalavra(Palavra palavra){
+        Node aux = new Node(null);
+        aux = getNodeRef(palavra);
+        System.out.println(aux.element.toString());
+    }
+
     public void palavraMaisFrequente(){
         Node aux = new Node(null);
         Node auxMaisFrequente = new Node(null);

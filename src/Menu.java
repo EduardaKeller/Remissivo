@@ -41,7 +41,13 @@ public class Menu {
                     //*****************lista.palavraMaisRecorrente();
                     break;
                 case 4:
-
+                    System.out.println("Digite a plavra que seja procurar");
+                    String p = in.next();
+                    Palavra palavra = new Palavra(p.toLowerCase(), 1);
+                    Leitura.listaPalavras.pesquisaPalavra(palavra);
+                    System.out.println("Digite a pagina desejada");
+                    int aux = in.nextInt();
+                    Leitura.printaPagina(aux);
                     break;
 
             }
