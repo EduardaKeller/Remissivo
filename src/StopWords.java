@@ -55,12 +55,29 @@ public class StopWords {
     }
 
     //verifica se as últimas duas letras da palavras são 's, se for remove o fim da palavra
-    private static String removeApostrofe(String palavra){
+    public static String removeApostrofe(String palavra){
         if(palavra.length()<=2){return palavra;}
 
         String aux = palavra.substring(palavra.length()-2);
         if(aux.equalsIgnoreCase("'s")){
             return palavra.substring(0,palavra.length()-2);
+        }
+        if(aux.equalsIgnoreCase("'d")){
+            return palavra.substring(0,palavra.length()-2);
+        }
+        if(aux.equalsIgnoreCase("'t")){
+            return palavra.substring(0,palavra.length()-2);
+        }
+
+        aux = palavra.substring(palavra.length()-3);
+        if(aux.equalsIgnoreCase("'ll")){
+            return palavra.substring(0,palavra.length()-3);
+        }
+        if(aux.equalsIgnoreCase("'re")){
+            return palavra.substring(0,palavra.length()-3);
+        }
+        if(aux.equalsIgnoreCase("'ve")){
+            return palavra.substring(0,palavra.length()-3);
         }
 
         else return palavra;

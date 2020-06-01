@@ -57,15 +57,16 @@ public class Leitura {
             for (String s : separa) {
                 s = s.toLowerCase();
                 if(s.length() != 0) {
+                    s = listaDeStopWords.removeApostrofe(s);
                     if (listaDeStopWords.verificaStopWords(s)) {
                     } else {
-                        Palavra aux = new Palavra(s, i);
-                        if (listaPalavras.contains(aux)) {
-                            listaPalavras.addPagina(aux);
-                        } else {
-                            listaPalavras.addOrdenado(aux);
-                        }
-                    }
+                            Palavra aux = new Palavra(s, i);
+                            if (listaPalavras.contains(aux)) {
+                                listaPalavras.addPagina(aux);
+                            } else {
+                                listaPalavras.addOrdenado(aux);
+                                }
+                            }
                         }
                     }
                 }
@@ -79,5 +80,6 @@ public class Leitura {
 
         }
     }
+
 }
 

@@ -42,15 +42,18 @@ public class Menu {
                     Leitura.listaPalavras.palavraMaisFrequente();
                     break;
                 case 4:
-                    System.out.println("Digite a palavra que deseja procurar");
-                    String p = in.next();
-                    Palavra palavra = new Palavra(p.toLowerCase(), 1);
-                    Leitura.listaPalavras.pesquisaPalavra(palavra);
+                    Palavra auxPalavra = new Palavra(null,null);
+                    do {
+                        System.out.println("Digite a palavra que deseja procurar que exista no texto: ");
+                        String p = in.next();
+                        Palavra palavra = new Palavra(p.toLowerCase(), 1);
+                        auxPalavra = palavra;
+                    }while(!Leitura.listaPalavras.contains(auxPalavra));
+                    Leitura.listaPalavras.pesquisaPalavra(auxPalavra);
                     System.out.println("Digite a pagina desejada");
                     int aux = in.nextInt();
                     Leitura.printaPagina(aux);
                     break;
-
             }
         } while (opcao != 5);
     }
