@@ -48,21 +48,25 @@ public class Leitura {
     //Separa a linha em palavras, verifica se é stopwords e se não for manda pra insereRepositorio
     public void separaPalavras(){
 
-        for (int i = 1; i <= numLinhas; i++) {
-            linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
-            linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
-            String[] separa = linhas[i - 1].split(" ");
+        int n = 1;
+        for(int i = 1; i <= numPaginas; i++){
+            for(int j = 0; j < 40 && n < numLinhas; j++, n++){
+            linhas[n - 1] = linhas[n - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
+            linhas[n - 1] = linhas[n - 1].replaceAll(",", ""); // para remover vírgulas"
+            linhas[n - 1] = linhas[n - 1].replaceAll("[.1234567890*()!?]", ""); // para remover vírgulas"
+            String[] separa = linhas[n - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
                 if(s.length() != 0) {
                     if (listaDeStopWords.verificaStopWords(s)) {
                     } else {
-                            Palavra aux = new Palavra(s, i);
-                            if (listaPalavras.contains(aux)) {
-                               listaPalavras.addPagina(aux);
-                            } else {
-                                listaPalavras.add(aux);
-                            }
+                        Palavra aux = new Palavra(s, i);
+                        if (listaPalavras.contains(aux)) {
+                            listaPalavras.addPagina(aux);
+                        } else {
+                            listaPalavras.addOrdenado(aux);
+                        }
+                    }
                         }
                     }
                 }

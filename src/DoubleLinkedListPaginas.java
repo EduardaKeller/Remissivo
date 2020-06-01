@@ -172,4 +172,6 @@ public class DoubleLinkedListPaginas {
     public Integer getHead(){
         return header.element;
     }
+
+    public int getCount(){return count;}
 }

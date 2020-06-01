@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class StopWords {
 
-    public static String stopWords[] = new String[320];
+    public static String stopWords[] = new String[500];
     private static int contStopWords = 0;
     private static int contPalavras = 0;
 

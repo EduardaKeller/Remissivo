@@ -53,7 +53,10 @@ public class DoubleLinkedListPalavras {
      */
     public void addPagina(Palavra palavra){
         Node aux = getNodeRef(palavra);
-        aux.element.addPagina(palavra.getPagina());
+        aux.element.addVezesQueApareceu();
+        if(aux.element.getPagina()!=palavra.getPagina()) {
+            aux.element.addPagina(palavra.getPagina());
+        }
     }
 
     /**
@@ -70,7 +73,6 @@ public class DoubleLinkedListPalavras {
         }
         return false;
     }
-
 
     public void add(Palavra element, int index){
         if (index < 0 || index > count)
@@ -96,16 +98,21 @@ public class DoubleLinkedListPalavras {
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
     public void addOrdenado(Palavra element) throws IndexOutOfBoundsException {
-
+        if(count == 0){
+            add(element);
+            return;
+            }
         Node aux = header.next;
         for (int i = 0; i < count; i++) {
             int compare = element.getPalavra().compareTo(aux.element.getPalavra());
 
             if(compare <= 0){
-                addOrdenado(element);
+                add(element,i);
+                return;
             }else{
                 if(aux.equals(trailer.prev)){
                     add(element);
+                    return;
                 }
             }
             aux = aux.next;
