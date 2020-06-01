@@ -88,15 +88,15 @@ public class DoubleLinkedListPaginas {
         return count;
     }
 
-
+//Cria a string dos números, separando eles por ", "
     @Override
     public String toString()
     {
         StringBuilder s = new StringBuilder();
         Node aux = header.next;
         for (int i = 0; i < count; i++) {
-            s.append(aux.element.toString());
-            s.append("\n");
+                s.append(aux.element.toString());
+                s.append(", ");
             aux = aux.next;
         }
         return s.toString();
@@ -166,7 +166,7 @@ public class DoubleLinkedListPaginas {
         return -1;
     }
     public Integer getTail(){
-        return trailer.element;
+        return trailer.prev.element;
     }
 
     public Integer getHead(){

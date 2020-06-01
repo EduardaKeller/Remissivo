@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class StopWords {
 
-    private static String stopWords[] = new String[500];
+    public static String stopWords[] = new String[320];
     private static int contStopWords = 0;
     private static int contPalavras = 0;
 
@@ -23,7 +23,7 @@ public class StopWords {
             while ((line = reader.readLine()) != null) {
                 if(numLinhas == 500) break;
                 stopWords[numLinhas] = line;
-                System.out.println(stopWords[numLinhas]);
+                //Verificar se esta salvando as stopwords System.out.println(stopWords[numLinhas]);
                 numLinhas++;
             }
         } catch (IOException e) {
@@ -32,33 +32,38 @@ public class StopWords {
     }
 
     //Verifica se a palavra é stopword ou não comparando com a lista previamente criada, vindo a contar todas as stopwords que aparecem e todas as palavras
-    public static String verificaStopWords(String palavra) {
-        palavra = removeApostrofe(palavra);
+    public static boolean verificaStopWords(String palavra) {
+        if(palavra != null && palavra.length()>2){palavra = removeApostrofe(palavra);}
         for (int i = 0; i < stopWords.length; i++) {
             if (stopWords[i] != null) {
                 if (palavra.equalsIgnoreCase(stopWords[i])) {
-                    contStopWords ++;
+                    contStopWords++;
                     contPalavras++;
-                    return "";
-                }else{contPalavras++;
-                    return palavra;}
-                    //System.out.println(stopWords[i]);
+                    return true;
                 }
             }
-        return palavra;
+            //System.out.println(stopWords[i]);
+        }
+        contPalavras++;
+        return false;
     }
 
-    public static double porcentagemStopWords() {
-        int aux = (contStopWords/contPalavras)*100;
-        return aux;
+    public static void getPorcentagemStopWords() {
+        double aux1 = contStopWords;
+        double aux2 = contPalavras;
+        double aux = (aux1/aux2)*100;
+        System.out.println("Porcentagem de StopWords encontradas no texto: "+aux);
     }
 
-    //verifica se as últimas duas letras da palavras são 's, se for remove da palavra
+    //verifica se as últimas duas letras da palavras são 's, se for remove o fim da palavra
     private static String removeApostrofe(String palavra){
+        if(palavra.length()<=2){return palavra;}
+
         String aux = palavra.substring(palavra.length()-2);
         if(aux.equalsIgnoreCase("'s")){
             return palavra.substring(0,palavra.length()-2);
         }
+
         else return palavra;
     }
 

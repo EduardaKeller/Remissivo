@@ -25,9 +25,9 @@ public class DoubleLinkedListPalavras {
 
     public Node getNodeRef(Palavra palavra){
         Node aux = new Node(null);
-        aux = header;
+        aux = header.next;
         for(int i=0; i<count;i++){
-            if(aux.element.getPalavra()==palavra.getPalavra()){return aux;}
+            if(aux.element.getPalavra().equals(palavra.getPalavra())){return aux;}
             aux = aux.next;
         }
         return aux;
@@ -47,10 +47,30 @@ public class DoubleLinkedListPalavras {
         count++;
     }
 
+    /**
+     * Adiciona uma pagina no nodo da palavra
+     * @param palavra pega a nova pagina e adiciona ao nodo existente referente a palavra em questão
+     */
     public void addPagina(Palavra palavra){
         Node aux = getNodeRef(palavra);
         aux.element.addPagina(palavra.getPagina());
     }
+
+    /**
+     * Verifica se existe um nodo com a palavra desejada
+     * @param element pega a palavra desejada e compara com os nodos existentes
+     */
+    public boolean contains(Palavra element) {
+        Node aux = header.next;
+        while (aux != trailer) {
+            if (aux.element.getPalavra().equals(element.getPalavra())) {
+                return true;
+            }
+            aux = aux.next;
+        }
+        return false;
+    }
+
 
     public void add(Palavra element, int index){
         if (index < 0 || index > count)
@@ -72,24 +92,17 @@ public class DoubleLinkedListPalavras {
 
     /**
      * Insere um elemento em uma determinada posicao da lista
-     * @param index a posicao da lista onde o elemento sera inserido
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
-    public void addOrdenado(int index, Palavra element) throws IndexOutOfBoundsException {
-        if (index < 0 || index > count) // indice invalido
-            throw new IndexOutOfBoundsException();
-
-        if (index == count) { // insercao no final
-            add(element);
-        }
+    public void addOrdenado(Palavra element) throws IndexOutOfBoundsException {
 
         Node aux = header.next;
         for (int i = 0; i < count; i++) {
             int compare = element.getPalavra().compareTo(aux.element.getPalavra());
 
             if(compare <= 0){
-                addOrdenado(i,element);
+                addOrdenado(element);
             }else{
                 if(aux.equals(trailer.prev)){
                     add(element);
@@ -155,7 +168,7 @@ public class DoubleLinkedListPalavras {
         Node aux = header.next;
         for (int i = 0; i < count; i++) {
             s.append(aux.element.toString());
-            s.append("\n");
+            s.append("\n ");
             aux = aux.next;
         }
         return s.toString();

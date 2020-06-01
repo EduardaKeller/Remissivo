@@ -8,16 +8,16 @@ import java.nio.file.Paths;
 
 
 public class Leitura {
-    private static DoubleLinkedListPalavras listaPlavras;
+    public static DoubleLinkedListPalavras listaPalavras;
     private static String linhas[] = new String[1000];
     int numLinhas = 0;
     int numPaginas = 1;
 
-    StopWords stopWords = new StopWords();
-    ListaPalavras listaPalavras = new ListaPalavras();
+    StopWords listaDeStopWords = new StopWords();
 
     public void lerArquivo(String nomeArquivo) {
-        listaPlavras = new DoubleLinkedListPalavras();
+        listaDeStopWords.InicializaStopWords();
+        listaPalavras = new DoubleLinkedListPalavras();
 
         //Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
         Path path1 = Paths.get("src/Arquivos/java.txt");
@@ -42,18 +42,29 @@ public class Leitura {
                 System.out.println(linhas[n]);
             }
         }
+        separaPalavras();
     }
 
     //Separa a linha em palavras, verifica se é stopwords e se não for manda pra insereRepositorio
-    public static void separaPalavras(){
-        for (int i = 1; i <= 10; i++) {
+    public void separaPalavras(){
+
+        for (int i = 1; i <= numLinhas; i++) {
             linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
             linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
             String[] separa = linhas[i - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
-                //s = s.stopWords.verificaStopWords(s);
-
+                if(s.length() != 0) {
+                    if (listaDeStopWords.verificaStopWords(s)) {
+                    } else {
+                            Palavra aux = new Palavra(s, i);
+                            if (listaPalavras.contains(aux)) {
+                               listaPalavras.addPagina(aux);
+                            } else {
+                                listaPalavras.add(aux);
+                            }
+                        }
+                    }
                 }
             }
         }

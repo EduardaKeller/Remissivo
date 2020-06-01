@@ -4,7 +4,16 @@ public class Menu {
 
     Scanner in = new Scanner(System.in);
     int opcao;
-    ListaPalavras lista = new ListaPalavras();
+
+    public void pegarArquivo(){
+        // Pega o nome do arquivo que o usuário deseja ler
+        Scanner in = new Scanner(System.in);
+        System.out.println("Digite o nome do arquivo a ser lido");
+        String arquivo = in.next();
+
+        Leitura leitura = new Leitura();
+        leitura.lerArquivo(arquivo);
+    }
 
     public void mostraMenu(){
         System.out.println("|-------------------------------------------------------------------------------|");
@@ -18,23 +27,23 @@ public class Menu {
     }
 
     public void opcoes(){
-        mostraMenu();
         do{
+        mostraMenu();
             switch (opcao){
                 case 1:
+                    System.out.println(Leitura.listaPalavras.toString());
                     break;
                 case 2:
-                    System.out.println("Porcentagem de StopWords encontradas no texto: "+StopWords.porcentagemStopWords());
+                    StopWords.getPorcentagemStopWords();
                     break;
                 case 3:
                     //*****************lista.palavraMaisRecorrente();
                     break;
                 case 4:
                     break;
-                case 5:
-                    break;
+
             }
-        } while (opcao != 99);
+        } while (opcao != 5);
     }
 
 

@@ -18,4 +18,9 @@ public class Palavra {
 
     public Integer ultimaPagina(){return paginas.getTail();}
     public Integer primeiraPagina(){return paginas.getHead();}
+    public String toString(){
+            String aux = palavra +" - paginas: "+ paginas.toString();
+        return aux;
+    }
 }
+
