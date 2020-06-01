@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 public class Leitura {
     public static DoubleLinkedListPalavras listaPalavras;
     private static String linhas[] = new String[10000];
-    int numLinhas = 0;
+    static int numLinhas = 0;
     int numPaginas = 1;
 
     StopWords listaDeStopWords = new StopWords();
@@ -73,10 +73,11 @@ public class Leitura {
         }
     }
     public static void printaPagina(int pagina){
-
         System.out.println("--------------------- Pagina " + pagina + " ---------------------");
         for (int i = (pagina*40)-40; i < (pagina*40); i++) {
-            System.out.println(linhas[i]);
+                if(i<numLinhas){System.out.println(linhas[i]);}
+                else{}
+
         }
     }
 
