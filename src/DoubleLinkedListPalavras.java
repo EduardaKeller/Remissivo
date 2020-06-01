@@ -45,69 +45,21 @@ public class DoubleLinkedListPalavras {
         count++;
     }
 
-
-    /**
-     * Insere um elemento em uma determinada posicao da lista
-     * @param index a posicao da lista onde o elemento sera inserido
-     * @param element elemento a ser inserido
-     * @throws IndexOutOfBoundsException se (index < 0 || index > size())
-     */
-    public void add(int index, Palavra element) throws IndexOutOfBoundsException {
-        if (index < 0 || index > count ) // indice invalido
-            throw new IndexOutOfBoundsException();
-
-        if (index == count) { // insercao no final
-            add(element);
+    public Node getNodeRef(Palavra palavra){
+        Node aux = new Node(null);
+        aux = header;
+        for(int i=0; i<count;i++){
+            if(aux.element.getPalavra()==palavra.getPalavra()){return aux;}
+            aux = aux.next;
         }
-        else {
-            Node n = new Node(element); // cria o nodo
-            Node aux = getNodeRef(index); // "caminha" ate posicao index
-            n.next = aux;
-            n.prev = aux.prev;
-            aux.prev.next = n;
-            aux.prev = n;
-            count++;
-        }
+        return aux;
     }
 
-    /**
-     * Remove a primeira ocorrencia do elemento na lista, se estiver presente
-     * @param element o elemento a ser removido
-     * @return true se a lista contem o elemento especificado
-     */
-    public boolean remove(Palavra element) {
-        Node aux = header.next;
-        while (aux!=trailer) {
-            if (aux.element.equals(element)) {
-                aux.prev.next = aux.next;
-                aux.next.prev = aux.prev;
-                count--;
-                return true;
-            }
-            else
-                aux = aux.next;
-        }
-        return false;
+    public void addPagina(Palavra palavra){
+        Node aux = getNodeRef(palavra);
+
     }
 
-    /**
-     * Remove o elemento de uma determinada posicao da lista
-     * @param index a posicao da lista
-     * @return o elemento que foi removido da lista
-     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
-     */
-    public Palavra removeByIndex(int index) {
-        if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException();
-        }
-        // "Caminhar" até a posicao index
-        Node aux = getNodeRef(index);
-        Palavra num = aux.element;
-        aux.prev.next = aux.next;
-        aux.next.prev = aux.prev;
-        count--;
-        return num;
-    }
 
     /**
      * Retorna true se a lista contem o elemento especificado
@@ -157,6 +109,8 @@ public class DoubleLinkedListPalavras {
         }
         return aux;
     }
+
+
 
     /**
      * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a lista não contém o elemento

@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 
 public class Leitura {
-
+    private static DoubleLinkedListPalavras listaPlavras;
     String linhas[] = new String[1000];
     int numLinhas = 0;
     int numPaginas = 1;
@@ -17,8 +17,10 @@ public class Leitura {
     ListaPalavras listaPalavras = new ListaPalavras();
 
     public void lerArquivo(String nomeArquivo) {
+        listaPlavras = new DoubleLinkedListPalavras();
 
-        Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
+        //Path path1 = Paths.get("src/Arquivos/" + nomeArquivo +".txt");
+        Path path1 = Paths.get("src/Arquivos/java.txt");
 
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
             String line = null;
@@ -50,10 +52,8 @@ public class Leitura {
             String[] separa = linhas[i - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
-                if(stopWords.verificaStopWords(s) == false){
-                    //*************************listaPalavras.insereRepositorio(s);
+
                 }
-                //System.out.println(s); teste
             }
         }
 
@@ -67,6 +67,5 @@ public class Leitura {
                 System.out.println("->" + s);
             }
         }*/
-    }
 }
 

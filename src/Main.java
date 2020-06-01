@@ -9,11 +9,10 @@ public class Main {
         System.out.println("Digite o nome do arquivo a ser lido");
         String arquivo = in.next();
 
+        StopWords.InicializaStopWords();
+
         Leitura leitura = new Leitura();
         leitura.lerArquivo(arquivo);
-
-        StopWords stopwords = new StopWords();
-        stopwords.InicializaStopWords();
 
        Menu menu = new Menu();
        menu.mostraMenu();

@@ -8,7 +8,8 @@ public class Palavra {
         paginas = new DoubleLinkedListPaginas();
         paginas.add(pagina);
     }
-    public String getPlavra(){return this.palavra;}
+    public String getPalavra(){return this.palavra;}
+
     public boolean addPagina(Integer pagina){
         paginas.add(pagina);
         return true;

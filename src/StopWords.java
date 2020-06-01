@@ -12,7 +12,7 @@ public class StopWords {
     private static int contPalavras = 0;
 
     //Inicializa a lista de StopWords e grava elas na String de stopWords
-    public void InicializaStopWords() {
+    public static void InicializaStopWords() {
         String linhas[] = new String[1000];
         int numLinhas = 0;
 
@@ -21,7 +21,9 @@ public class StopWords {
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
             String line = null;
             while ((line = reader.readLine()) != null) {
+                if(numLinhas == 500) break;
                 stopWords[numLinhas] = line;
+                System.out.println(stopWords[numLinhas]);
                 numLinhas++;
             }
         } catch (IOException e) {
@@ -30,20 +32,20 @@ public class StopWords {
     }
 
     //Verifica se a palavra é stopword ou não comparando com a lista previamente criada, vindo a contar todas as stopwords que aparecem e todas as palavras
-    public boolean verificaStopWords(String palavra) {
+    public static String verificaStopWords(String palavra) {
         palavra = removeApostrofe(palavra);
         for (int i = 0; i < stopWords.length; i++) {
             if (stopWords[i] != null) {
                 if (palavra.equalsIgnoreCase(stopWords[i])) {
                     contStopWords ++;
                     contPalavras++;
-                    return true;
+                    return "";
                 }else{contPalavras++;
-                    return false;}
+                    return palavra;}
                     //System.out.println(stopWords[i]);
                 }
             }
-        return false;
+        return palavra;
     }
 
     public static double porcentagemStopWords() {
@@ -52,7 +54,7 @@ public class StopWords {
     }
 
     //verifica se as últimas duas letras da palavras são 's, se for remove da palavra
-    public static String removeApostrofe(String palavra){
+    private static String removeApostrofe(String palavra){
         String aux = palavra.substring(palavra.length()-2);
         if(aux.equalsIgnoreCase("'s")){
             return palavra.substring(0,palavra.length()-2);
