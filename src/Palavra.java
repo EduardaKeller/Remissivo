@@ -9,6 +9,7 @@ public class Palavra {
         paginas.add(pagina);
     }
     public String getPalavra(){return this.palavra;}
+    public Integer getPagina(){return paginas.getTail();}
 
     public boolean addPagina(Integer pagina){
         paginas.add(pagina);

@@ -14,7 +14,6 @@ public class Leitura {
     int numPaginas = 1;
 
     StopWords stopWords = new StopWords();
-    stopWords.Inicializa
     ListaPalavras listaPalavras = new ListaPalavras();
 
     public void lerArquivo(String nomeArquivo) {
@@ -53,7 +52,7 @@ public class Leitura {
             String[] separa = linhas[i - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
-                s = s.verificaStopWords(s);
+                //s = s.stopWords.verificaStopWords(s);
 
                 }
             }

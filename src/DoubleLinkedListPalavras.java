@@ -23,23 +23,16 @@ public class DoubleLinkedListPalavras {
         count = 0;
     }
 
-    // Metodo que retorna a referencia para o nodo da posicao index
-    private Node getNodeRefIndex(int index) {
-        Node aux = null;
-        if (index < count/2) {
-            // Percorre do inicio ate o meio
-            aux = header.next;
-            for (int i=0; i<index; i++)
-                aux = aux.next;
-        }
-        else {
-            // Percorre do fim ate o meio
-            aux = trailer.prev;
-            for(int i=count-1; i>index; i--)
-                aux = aux.prev;
+    public Node getNodeRef(Palavra palavra){
+        Node aux = new Node(null);
+        aux = header;
+        for(int i=0; i<count;i++){
+            if(aux.element.getPalavra()==palavra.getPalavra()){return aux;}
+            aux = aux.next;
         }
         return aux;
     }
+
 
     /**
      * Adiciona um elemento ao final da lista
@@ -54,6 +47,11 @@ public class DoubleLinkedListPalavras {
         count++;
     }
 
+    public void addPagina(Palavra palavra){
+        Node aux = getNodeRef(palavra);
+        aux.element.addPagina(palavra.getPagina());
+    }
+
     public void add(Palavra element, int index){
         if (index < 0 || index > count)
             throw new IndexOutOfBoundsException();
@@ -63,7 +61,7 @@ public class DoubleLinkedListPalavras {
         }
 
         Node n = new Node(element);
-        Node aux = getNodeRef(index);
+        Node aux = getNodeRefIndex(index);
 
                 n.prev = aux.prev;
         n.next = aux;
@@ -112,12 +110,12 @@ public class DoubleLinkedListPalavras {
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
-        Node aux = getNodeRef(index);
+        Node aux = getNodeRefIndex(index);
         return aux.element;
     }
 
     // Metodo que retorna a referencia para o nodo da posicao index
-    private Node getNodeRef(int index) {
+    private Node getNodeRefIndex(int index) {
         Node aux = null;
         if (index < count/2) {
             // Percorre do inicio ate o meio

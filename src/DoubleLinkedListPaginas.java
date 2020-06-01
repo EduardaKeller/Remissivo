@@ -44,26 +44,6 @@ public class DoubleLinkedListPaginas {
         count++;
     }
 
-
-    /**
-     * Remove o elemento de uma determinada posicao da lista
-     * @param index a posicao da lista
-     * @return o elemento que foi removido da lista
-     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
-     */
-    public Integer removeByIndex(int index) {
-        if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException();
-        }
-        // "Caminhar" até a posicao index
-        Node aux = getNodeRef(index);
-        Integer num = aux.element;
-        aux.prev.next = aux.next;
-        aux.next.prev = aux.prev;
-        count--;
-        return num;
-    }
-
     /**
      * Retorna true se a lista contem o elemento especificado
      * @param element o elemento a ser testado
@@ -80,19 +60,6 @@ public class DoubleLinkedListPaginas {
         return false;
     }
 
-    /**
-     * Retorna o elemento de uma determinada posicao da lista
-     * @param index a posicao da lista
-     * @return o elemento da posicao especificada
-     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
-     */
-    public Integer get(int index) {
-        if ((index < 0) || (index >= count)) {
-            throw new IndexOutOfBoundsException();
-        }
-        Node aux = getNodeRef(index);
-        return aux.element;
-    }
 
     // Metodo que retorna a referencia para o nodo
     // da posicao index
@@ -112,40 +79,6 @@ public class DoubleLinkedListPaginas {
         }
         return aux;
     }
-
-    /**
-     * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a lista não contém o elemento
-     * @param element o elemento a ser buscado
-     * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a lista não contém o elemento
-     */
-    public int indexOf(Integer element) {
-        Node aux = header.next;
-        for(int i=0; i<count; i++) {
-            if (aux.element.equals(element)) {
-                return i;
-            }
-            aux = aux.next;
-        }
-        return -1;
-    }
-
-    /**
-     * Substitui o elemento armanzenado em uma determinada posicao da lista pelo elemento indicado
-     * @param index a posicao da lista
-     * @param element o elemento a ser armazenado na lista
-     * @return o elemento armazenado anteriormente na posicao da lista
-     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
-     */
-    public Integer set(int index, Integer element) {
-        if ((index < 0) || (index >= count)) {
-            throw new IndexOutOfBoundsException();
-        }
-        Node aux = getNodeRef(index);
-        Integer num = aux.element;
-        aux.element = element;
-        return num;
-    }
-
 
     /**
      * Retorna o numero de elementos da lista
@@ -240,4 +173,3 @@ public class DoubleLinkedListPaginas {
         return header.element;
     }
 }
- ////
