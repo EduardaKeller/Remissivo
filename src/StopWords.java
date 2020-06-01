@@ -12,7 +12,7 @@ public class StopWords {
     private static int contPalavras = 0;
 
     //Inicializa a lista de StopWords e grava elas na String de stopWords
-    public static void InicializaStopWords() {
+    public void InicializaStopWords() {
         String linhas[] = new String[1000];
         int numLinhas = 0;
 

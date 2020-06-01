@@ -3,7 +3,7 @@ public class ListaPalavras {
         private Node header;
         private Node trailer;
         private int count;
-        private String [] repositorio; // guarda as palavras
+        private String [] repositorio; // guarda as palavras rep
 
         private class Node {
             public Integer element;

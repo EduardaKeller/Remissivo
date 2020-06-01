@@ -9,11 +9,12 @@ import java.nio.file.Paths;
 
 public class Leitura {
     private static DoubleLinkedListPalavras listaPlavras;
-    String linhas[] = new String[1000];
+    private static String linhas[] = new String[1000];
     int numLinhas = 0;
     int numPaginas = 1;
 
     StopWords stopWords = new StopWords();
+    stopWords.Inicializa
     ListaPalavras listaPalavras = new ListaPalavras();
 
     public void lerArquivo(String nomeArquivo) {
@@ -45,13 +46,14 @@ public class Leitura {
     }
 
     //Separa a linha em palavras, verifica se é stopwords e se não for manda pra insereRepositorio
-    public void separaPalavras(){
+    public static void separaPalavras(){
         for (int i = 1; i <= 10; i++) {
             linhas[i - 1] = linhas[i - 1].replaceAll("\\t", " "); // substitui tab por espaco em branco
             linhas[i - 1] = linhas[i - 1].replaceAll(",", ""); // para remover vírgulas"
             String[] separa = linhas[i - 1].split(" ");
             for (String s : separa) {
                 s = s.toLowerCase();
+                s = s.verificaStopWords(s);
 
                 }
             }
