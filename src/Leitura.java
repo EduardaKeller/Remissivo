@@ -51,7 +51,7 @@ public class Leitura {
             for (String s : separa) {
                 s = s.toLowerCase();
                 if(stopWords.verificaStopWords(s) == false){
-                    listaPalavras.insereRepositorio(s);
+                    //*************************listaPalavras.insereRepositorio(s);
                 }
                 //System.out.println(s); teste
             }

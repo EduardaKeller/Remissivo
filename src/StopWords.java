@@ -11,7 +11,7 @@ public class StopWords {
     private static int contStopWords = 0;
     private static int contPalavras = 0;
 
-    //Inicializa a lista de StopWords
+    //Inicializa a lista de StopWords e grava elas na String de stopWords
     public void InicializaStopWords() {
         String linhas[] = new String[1000];
         int numLinhas = 0;
@@ -29,7 +29,7 @@ public class StopWords {
         }
     }
 
-    //Verifica se a palavra é stopword ou não comparando com a lista
+    //Verifica se a palavra é stopword ou não comparando com a lista previamente criada, vindo a contar todas as stopwords que aparecem e todas as palavras
     public boolean verificaStopWords(String palavra) {
         palavra = removeApostrofe(palavra);
         for (int i = 0; i < stopWords.length; i++) {
@@ -46,7 +46,7 @@ public class StopWords {
         return false;
     }
 
-    public double porcentagemStopWords() {
+    public static double porcentagemStopWords() {
         int aux = (contStopWords/contPalavras)*100;
         return aux;
     }

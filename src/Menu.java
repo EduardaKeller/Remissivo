@@ -24,9 +24,10 @@ public class Menu {
                 case 1:
                     break;
                 case 2:
+                    System.out.println("Porcentagem de StopWords encontradas no texto: "+StopWords.porcentagemStopWords());
                     break;
                 case 3:
-                    lista.palavraMaisRecorrente();
+                    //*****************lista.palavraMaisRecorrente();
                     break;
                 case 4:
                     break;

@@ -1,4 +1,5 @@
 public class ListaPalavras {
+    /*
         private Node header;
         private Node trailer;
         private int count;
@@ -69,5 +70,5 @@ public class ListaPalavras {
 
 
 
-
+*/
 }
