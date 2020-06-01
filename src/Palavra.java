@@ -3,6 +3,7 @@ public class Palavra {
     String palavra;
     DoubleLinkedListPaginas paginas;
     int vezesQueAparece = 1;
+
     public Palavra(String palavra, Integer pagina){
         this.palavra = palavra;
         paginas = new DoubleLinkedListPaginas();
@@ -10,7 +11,7 @@ public class Palavra {
     }
     public String getPalavra(){return this.palavra;}
     public Integer getPagina(){return paginas.getTail();}
-    public int getVezesQueAparece(){return vezesQueAparece;}
+    public int getVezesQueAparece(){return vezesQueAparece+1;}
 
     public boolean addPagina(Integer pagina){
         paginas.add(pagina);

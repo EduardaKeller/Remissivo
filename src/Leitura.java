@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 public class Leitura {
     public static DoubleLinkedListPalavras listaPalavras;
-    private static String linhas[] = new String[1000];
+    private static String linhas[] = new String[10000];
     int numLinhas = 0;
     int numPaginas = 1;
 

@@ -37,10 +37,11 @@ public class Menu {
                     StopWords.getPorcentagemStopWords();
                     break;
                 case 3:
-
+                    Leitura.listaPalavras.palavraMaisFrequente();
                     //*****************lista.palavraMaisRecorrente();
                     break;
                 case 4:
+
                     break;
 
             }

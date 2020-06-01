@@ -33,6 +33,17 @@ public class DoubleLinkedListPalavras {
         return aux;
     }
 
+    public void palavraMaisFrequente(){
+        Node aux = new Node(null);
+        Node auxMaisFrequente = new Node(null);
+        auxMaisFrequente = header.next;
+        aux = header.next;
+        for(int i=0; i<count;i++){
+            if(aux.element.getVezesQueAparece()>= auxMaisFrequente.element.getVezesQueAparece()){auxMaisFrequente = aux;}
+            aux = aux.next;
+        }
+        System.out.println("Palavra mais frequente do texto: " +auxMaisFrequente.element.getPalavra());
+    }
 
     /**
      * Adiciona um elemento ao final da lista
